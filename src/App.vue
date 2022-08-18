@@ -1,17 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const titleClass = ref('title');
+const count = ref(0);
 </script>
 
 <template>
-  <h1 :class="titleClass">
-    Make me red
-  </h1> <!-- add dynamic class binding here -->
+  <!-- make this button work -->
+  <button @click="count++">
+    count is: {{ count }}
+  </button>
 </template>
-
-<style>
-.title {
-  color: #ff1740;
-}
-</style>
