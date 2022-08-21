@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const count = ref(0);
+const text = ref('');
 </script>
 
 <template>
-  <!-- make this button work -->
-  <button @click="count++">
-    count is: {{ count }}
-  </button>
+  <input
+    v-model="text"
+    placeholder="Type here"
+  >
+  <p>text: {{ text }}</p>
 </template>
