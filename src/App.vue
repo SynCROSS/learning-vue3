@@ -1,13 +1,24 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const text = ref('');
+const awesome = ref(true);
+
+const toggle = () => {
+  awesome.value = !awesome.value;
+};
 </script>
 
 <template>
-  <input
-    v-model="text"
-    placeholder="Type here"
+  <button
+    :aria-pressed="!awesome"
+    @click="toggle"
   >
-  <p>text: {{ text }}</p>
+    toggle
+  </button>
+  <h1 v-if="awesome">
+    Vue is awesome!
+  </h1>
+  <h1 v-else>
+    Oh no 😢
+  </h1>
 </template>
