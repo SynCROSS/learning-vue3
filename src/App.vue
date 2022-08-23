@@ -10,6 +10,8 @@ const toggle = () => {
 
 <template>
   <button
+    type="button"
+    role="button"
     :aria-pressed="!awesome"
     @click="toggle"
   >
