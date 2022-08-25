@@ -12,6 +12,7 @@
   },
   "plugins": ["vue", "@typescript-eslint"],
   "rules": {
-    "arrow-parens": ["error", "as-needed"]
+    "arrow-parens": ["error", "as-needed"],
+    "linebreak-style": ["error", "windows"]
   }
 }
