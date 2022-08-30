@@ -1,17 +1,37 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref, watch } from 'vue';
 
-const p = ref<HTMLParagraphElement>();
+const todoId = ref(1);
+const todoData = ref(null);
 
-onMounted(() => {
-  if (p.value?.textContent) {
-    p.value.textContent += 'World!';
-  }
-});
+/** Increase todoId */
+const increaseTodoId = () => {
+  todoId.value += 1;
+};
+
+/** Fetch TO-DO Data */
+const fetchData = async () => {
+  todoData.value = null;
+  const res = await fetch(`https://jsonplaceholder.typicode.com/todos/${todoId.value}`);
+  todoData.value = await res.json();
+};
+
+fetchData();
+
+watch(todoId, fetchData);
 </script>
 
 <template>
-  <p ref="p">
-    Hello
+  <p>Todo id: {{ todoId }}</p>
+  <button
+    type="button"
+    role="button"
+    @click="increaseTodoId"
+  >
+    Fetch next todo
+  </button>
+  <p v-if="!todoData">
+    Loading...
   </p>
+  <pre v-else>{{ todoData }}</pre>
 </template>
