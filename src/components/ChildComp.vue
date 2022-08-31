@@ -1,3 +1,11 @@
+<script setup lang="ts">
+defineProps(
+  {
+    msg: String,
+  },
+);
+</script>
+
 <template>
-  <h2>A Child Component!</h2>
+  <h2>{{ msg ?? 'No props passed yet' }}</h2>
 </template>
